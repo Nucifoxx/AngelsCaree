@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More Information</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .image {
+      width: 200px;
+      height: 300px;
+      margin: 20px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(20px, 20px);
+      }
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+
+    .floating {
+      animation: float 5s infinite alternate;
+    }
+  </style>
+</head>
+<body>
+  <img src="C:\Users\Nuci\Pictures\Uplay\WhatsApp Image 2024-11-29 at 03.32.18.jpeg" class="image floating" style="animation-delay: 0s;">
+  <img src="C:\Users\Nuci\Pictures\Uplay\WhatsApp Image 2024-11-29 at 02.46.07.jpeg" class="image floating" style="animation-delay: 1s;">
+  <img src="C:\Users\Nuci\Pictures\Uplay\WhatsApp Image 2024-11-29 at 03.28.36.jpeg" class="image floating" style="animation-delay: 2s;">
+  <img src="C:\Users\Nuci\Pictures\Uplay\WhatsApp Image 2024-11-29 at 03.27.46.jpeg" class="image floating" style="animation-delay: 3s;">
+  <img src="C:\Users\Nuci\Pictures\Uplay\WhatsApp Image 2024-11-29 at 03.27.31.jpeg" class="image floating" style="animation-delay: 4s;">
+
+  <script>
+    // Function to make images move interactively
+    document.querySelectorAll('.image').forEach(img => {
+      img.addEventListener('mouseover', () => {
+        img.style.transform = 'translateY(-10px)';
+      });
+      img.addEventListener('mouseout', () => {
+        img.style.transform = 'translateY(0)';
+      });
+    });
+  </script>
+</body>
+</html>
