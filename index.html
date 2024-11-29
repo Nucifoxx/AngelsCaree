@@ -1,100 +1,177 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<head> 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fundraising Page</title>
-  <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@latest"></script>
   <style>
-    /* Estilos de la página */
-    body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #000000; /* Fondo negro */
-      color: #fff;
-      line-height: 1.6;
+    /* Estilo de la página principal */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000000; /* Fondo negro */
+  color: #333;
+  line-height: 1.6;
+  position: relative;
+}
+
+    .banner {
+      width: 100%;
+      background-color: #4caf50;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 24px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     .container {
+      position: relative;
       max-width: 900px;
       margin: 30px auto;
       padding: 20px;
-      background: #222;
+      background: #ffffff;
       border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      overflow: visible;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-size: 28px;
+      color: #2e7d32;
+      margin: 0;
+    }
+    .image-section {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .image-section img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .progress-bar {
+      width: 100%;
+      background: #e0e0e0;
+      height: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+    .progress {
+      height: 10px;
+      background: #4caf50;
+      border-radius: 5px;
+    }
+    .details-section {
+      padding: 15px;
+    }
+    .details-section p {
+      margin: 10px 0;
+      font-size: 16px;
     }
     .goal-section {
-      background-color: #333;
+      background-color: #f1f8e9;
       padding: 15px;
       border-radius: 8px;
       margin-bottom: 20px;
     }
-    .progress-bar {
-      width: 100%;
-      background: #555;
-      height: 20px;
-      border-radius: 10px;
-      margin: 10px 0;
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
     }
-    .progress {
-      height: 20px;
-      background: #4caf50; /* Barra de progreso verde */
-      border-radius: 10px;
+    .share-btn,
+    .donate-btn {
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
-    .progress-text {
-      text-align: center;
-      margin-top: 10px;
+    .share-btn {
+      background-color: #0288d1;
       color: #fff;
+    }
+    .share-btn:hover {
+      background-color: #0277bd;
+    }
+    .donate-btn {
+      background-color: #f57c00;
+      color: #fff;
+    }
+    .donate-btn:hover {
+      background-color: #ef6c00;
+    }
+    .description {
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333;
+    }
+    .status {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+    .hidden-message {
+      display: none;
+      padding: 15px;
+      background: #e3f2fd;
+      border-radius: 8px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="goal-section">
-      <p><strong>Objective:</strong> $20,000 USD</p>
-      <div class="progress-bar">
-        <div class="progress" style="width: 0%;"></div>
+    <div class="image-section">
+  <img src="Green and White Modern Open Donation Instagram Post.png">
+    </div>
+    <div class="details-section">
+      <p><strong>ANGEL CAREES</strong> is organizing this fundraiser.</p>
+      <div class="goal-section">
+        <p><strong>Objective:</strong> $20,000 USD</p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 0%;"></div>
+        </div>
+        <p class="progress-text">$0.00 of $20,000 raised</p>
       </div>
-      <p class="progress-text">$0.00 of $20,000 raised</p>
+      <p class="status">Wallet and funds are updated in real-time.</p>
+      <div class="buttons">
+        <button class="share-btn" onclick="window.location.href='more.html'">More</button>
+        <button class="donate-btn" onclick="showWallet()">Donate Now</button>
+      </div>
+      <div class="hidden-message" id="walletMessage">
+        <p>Thank you for your support! Please send your crypto donations to the following Solana wallet address:</p>
+        <p><strong>Wallet Address:</strong> HnppqxDGssw8R1aefjgU8B2gmNaeba5iC3xrC1xTsVZH</p>
+        <p>We collaborate with Just A Chill Donkey Fr.</p>
+      </div>
+    </div>
+    <div class="description">
+      <p>
+        We have been dedicated to helping and supporting our community for over 5 years, providing assistance and making a positive impact in their lives. Your contributions can provide food, essential items, and support for the community, creating positive change and spreading hope.
+      </p>
     </div>
   </div>
 
+  <!-- JavaScript for showing wallet message -->
   <script>
-    // Dirección de la billetera Solana
-    const walletAddress = "HnppqxDGssw8R1aefjgU8B2gmNaeba5iC3xrC1xTsVZH";
-    const goalAmount = 20000; // Objetivo en USD
-    const solToUsdRate = 20; // Tasa de conversión (ajusta según el precio actual de SOL)
-
-    async function updateProgress() {
-      try {
-        // Conectar a la red principal de Solana
-        const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet-beta'), 'confirmed');
-        
-        // Obtener el saldo en lamports
-        const balance = await connection.getBalance(new solanaWeb3.PublicKey(walletAddress));
-        const solBalance = balance / solanaWeb3.LAMPORTS_PER_SOL; // Convertir de lamports a SOL
-
-        // Convertir el saldo a USD
-        const usdRaised = solBalance * solToUsdRate;
-
-        // Calcular el porcentaje del objetivo alcanzado
-        const progressPercentage = Math.min((usdRaised / goalAmount) * 100, 100);
-
-        // Actualizar la barra de progreso
-        document.querySelector('.progress').style.width = progressPercentage + "%";
-
-        // Actualizar el texto del progreso
-        document.querySelector('.progress-text').innerText = `$${usdRaised.toFixed(2)} of $${goalAmount.toFixed(2)} raised`;
-      } catch (error) {
-        console.error("Error fetching wallet balance:", error);
+    function showWallet() {
+      const walletMessage = document.getElementById('walletMessage');
+      if (walletMessage.style.display === 'none' || walletMessage.style.display === '') {
+        walletMessage.style.display = 'block';
+      } else {
+        walletMessage.style.display = 'none';
       }
     }
-
-    // Llamar a la función al cargar la página y actualizar cada 30 segundos
-    updateProgress();
-    setInterval(updateProgress, 30000);
   </script>
 </body>
 </html>
-
