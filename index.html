@@ -39,7 +39,7 @@
     }
     .progress {
       height: 20px;
-      background: #4caf50;
+      background: #4caf50; /* Barra de progreso verde */
       border-radius: 10px;
     }
     .progress-text {
@@ -91,11 +91,10 @@
       }
     }
 
-    // Llamar a la función al cargar la página
+    // Llamar a la función al cargar la página y actualizar cada 30 segundos
     updateProgress();
-
-    // Actualizar cada 30 segundos
     setInterval(updateProgress, 30000);
   </script>
 </body>
 </html>
+
